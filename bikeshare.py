@@ -20,10 +20,22 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
 
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+<<<<<<< HEAD
 
     city = input('Would you like to see the data for Chicago, New York City, or Washington? ').lower()
     #.lower() is used to accept input in any format from user
 
+||||||| merged common ancestors
+    
+    city = input('Would you like to see the data for Chicago, New York City, or Washington? ').lower() 
+    #.lower() is used to accept input in any format
+    
+=======
+
+    city = input('Would you like to see the data for Chicago, New York City, or Washington? ').lower()
+    #.lower() is used to accept input in any format
+
+>>>>>>> refactoring
     while(True):
         if(city == 'chicago' or city == 'new york city' or city == 'washington' or city == 'all'):
             break
@@ -136,7 +148,7 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # TO DO: display total travel time
-    total_travel_time = df['Trip Duration'].sum()
+    totalTravelTime = df['Trip Duration'].sum()
     time1 = total_travel_time
     day = time1 // (24 * 3600)
     time1 = time1 % (24 * 3600)
@@ -148,7 +160,7 @@ def trip_duration_stats(df):
     print('\nTotal travel time is {} days {} hours {} minutes {} seconds'.format(day, hour, minutes, seconds))
 
     # TO DO: display mean travel time
-    mean_travel_time = df['Trip Duration'].mean()
+    meanTravelTime = df['Trip Duration'].mean()
     time2 = mean_travel_time
     day2 = time2 // (24 * 3600)
     time2 = time2 % (24 * 3600)
