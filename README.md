@@ -11,4 +11,4 @@ washington.csv
 bikeshare.py
 
 ### Credits
-For this project I would like the team behind the pdsnd at Udacity for teaching and assisting me through this journey :)
+I would like to thank the team behind the pdsnd at Udacity for teaching and assisting me through this journey :)
