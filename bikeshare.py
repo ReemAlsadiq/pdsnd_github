@@ -18,12 +18,12 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
-    city = input('Would you like to see the data for Chicago, New York City, or Washington? ').lower() 
+
+    city = input('Would you like to see the data for Chicago, New York City, or Washington? ').lower()
     #.lower() is used to accept input in any format
-    
+
     while(True):
         if(city == 'chicago' or city == 'new york city' or city == 'washington' or city == 'all'):
             break
@@ -33,21 +33,23 @@ def get_filters():
     # TO DO: get user input for month (all, january, february, ... , june)
 
     month = input('Enter a month: January, February, March, April, May, or June: ').lower()
+        #.lower() is used to accept input in any format
+
     while(True):
         if(month == 'january' or month == 'february' or month == 'march' or month == 'april' or month == 'may' or month == 'june' or month == 'all'):
             break
         else:
             month = input('Please enter a valid month: ').lower()
-            
+
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    
+
     day =  input('Please enter a day: monday, tuesday, wednesday, thursday, friday, saturday , sunday or all to display data of all days: ').lower()
     while(True):
         if(day == 'monday' or day == 'tuesday' or day == 'wednesday' or day == 'thursday' or day == 'friday' or day == 'saturday' or day == 'sunday' or day == 'all'):
             break
         else:
             day = input('Please enter the correct day: ').lower()
-            
+
 
     print('-'*40)
     return city, month, day
@@ -67,18 +69,18 @@ def load_data(city, month, day):
 
 
     df = pd.read_csv(CITY_DATA[city])
-    
+
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['End Time'] = pd.to_datetime(df['End Time'])
     if month != 'all':
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
         df = df[df['Start Time'].dt.month == month]
-        
-    if day != 'all':    
+
+    if day != 'all':
         df = df[df['Start Time'].dt.weekday_name == day.title()]
     print(df.head())
-    
+
     return df
 
 
@@ -174,7 +176,7 @@ def user_stats(df):
     no_of_customers = df['User Type'].str.count('Customer').sum()
     print('\nNumber of subscribers is {}\n'.format(int(no_of_subscribers)))
     print('\nNumber of customers is {}\n'.format(int(no_of_customers)))
-     
+
 
     # TO DO: Display counts of gender
     male_count = df['Gender'].str.count('Male').sum()
@@ -198,20 +200,15 @@ def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
-        
+
         time_stats(df, month, day)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-            
+
 if __name__ == "__main__":
     main()
-
-
-            
-            
-            
