@@ -148,7 +148,7 @@ def trip_duration_stats(df):
     print('\nTotal travel time is {} days {} hours {} minutes {} seconds'.format(day, hour, minutes, seconds))
 
     # TO DO: display mean travel time
-    mean_travel_time = df['Trip Duration'].mean()
+    meanTravelTime = df['Trip Duration'].mean()
     time2 = mean_travel_time
     day2 = time2 // (24 * 3600)
     time2 = time2 % (24 * 3600)
